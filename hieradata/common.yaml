@@ -1,0 +1,14 @@
+---
+mcollective::sub_collectives:  mcollective
+mcollective::main_collective:  mcollective
+mcollective::plugin_psk:       $1$yrprMeNi$SV6Tem3xPPKD1/kf7tV6w.
+mcollective::port:             61613
+mcollective::user:             mcollective
+mcollective::password:         marionette
+mcollective::log_level:        warn
+mcollective::ssl:              false
+
+classes:
+    - base
+    - sftp
+    - smtp

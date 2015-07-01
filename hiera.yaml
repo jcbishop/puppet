@@ -1,0 +1,16 @@
+---
+:backends:
+  - yaml
+  - eyaml
+:yaml:
+  :datadir: /etc/puppet/hieradata
+:eyaml:
+  :datadir: /etc/puppetlabs/puppet/modules/hieradata
+  :pkcs7_private_key: /etc/puppetlabs/puppet/secure/keys/private_key.pkcs7.pem
+  :pkcs7_public_key: /etc/puppetlabs/puppet/secure/keys/public_key.pkcs7.pem
+:hierarchy:
+  - "node/%{::fqdn}"
+  - "%{::clientcert}"
+  - "%{::environment}"
+  - "virtual_%{::is_virtual}"
+  - common

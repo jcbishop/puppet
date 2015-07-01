@@ -1,0 +1,52 @@
+main_collective = <%= @main_collective %>
+collectives = <%= @sub_collectives %>
+libdir = /usr/libexec/mcollective
+logfile = /var/log/mcollective.log
+loglevel = <%= @log_level %>
+daemonize = 1
+
+#Plugins
+securityprovider = <%= @security_provider %>
+plugin.psk = <%= @security_secret %>
+
+plugin.get_passwd_cksum.activate_agent = true
+
+#direct_addressing = 0
+
+connector = rabbitmq
+plugin.rabbitmq.vhost = /mcollective
+plugin.rabbitmq.pool.size = 1
+plugin.rabbitmq.pool.1.host = <%= @host %>
+plugin.rabbitmq.pool.1.port = <%= @port %>
+plugin.rabbitmq.pool.1.user = <%= @user %>
+plugin.rabbitmq.pool.1.password = <%= @passwd %>
+#<% if @ssl == true %>
+#plugin.rabbitmq.pool.1.ssl  = 1
+#plugin.rabbitmq.pool.1.ca   = <%= @broker_ssl_ca %>
+#plugin.rabbitmq.pool.1.cert   = <%= @broker_ssl_cert %>
+#plugin.rabbitmq.pool.1.key   = <%= @broker_ssl_key %>
+#<% end %>
+
+
+#plugin.rabbitmq.pool.2.host = <%= @host2 %>
+#plugin.rabbitmq.pool.2.port = <%= @port2 %>
+#plugin.rabbitmq.pool.2.user = <%= @user %>
+#plugin.rabbitmq.pool.2.password = <%= @passwd %>
+#<% if @ssl == true %>
+#plugin.rabbitmq.pool.2.ssl  = 1
+#plugin.rabbitmq.pool.2.ca   = <%= @broker_ssl_ca %>
+#plugin.rabbitmq.pool.2.cert   = <%= @broker_ssl_cert %>
+#plugin.rabbitmq.pool.2.key   = <%= @broker_ssl_key %>
+#<% end %>
+
+#rpcauthorization = 0
+#Facts
+factsource = yaml
+plugin.yaml = /etc/mcollective/facts.yaml
+
+classesfile = /var/lib/puppet/classes.txt
+
+plugin.puppet.command = puppet agent -t
+plugin.puppet.splay = true
+plugin.puppet.splaylimit = 30
+plugin.puppet.config = /etc/puppet/puppet.conf

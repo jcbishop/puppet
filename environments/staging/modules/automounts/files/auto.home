@@ -1,0 +1,8 @@
+#
+#
+# This is an automounter map and it has the following format
+# key [ -mount-options-separated-by-comma ] location
+# Details may be found in the autofs(5) manpage
+# the following entries are samples to pique your imagination
+
+*               -fstype=nfs,rw,soft     vpna-cor-fsl501:/opt/data/export/home/&

@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+args="$@"
+
+TSTAMP=`date "+%Y/%m/%d %H:%M:%S"`
+# Setup Logging
+LOGFILE="/var/log/ftp_useradd.log"
+function logit() {
+    LEVEL=$1
+    MSG=$2
+    echo "${TSTAMP} - ${LEVEL} - ${USER} - ${MSG}" >>${LOGFILE}
+    echo "${MSG}"
+    echo ""
+}
+
+if [[ $# -lt 3 ]]
+then
+	echo "$arg[0] needs 3 parameters: USER, SUBDIRECTORY (under /shares) and the Comment"
+	exit 1
+fi
+
+if [[ "$UID" -ne 0 ]]
+then
+    echo "need sudo access to run this program"
+    exit 1
+fi
+N_USER=$1
+DIR=$2
+COMMENT=$3
+
+# find last UID used and add 1
+N_UID=`cat /etc/passwd | awk -F: '$3>39000&&$3<40000 { print $3 }'| tail -n1|awk '{print $0 +1}'`
+
+#add new user
+logit "INFO" "Adding user ${N_USER}, comment ${COMMENT}"
+RET=`/usr/sbin/useradd -u ${N_UID} -d /shares/${DIR}/${N_USER} -c "${COMMENT}" -s /sbin/nologin -g sftpusers ${N_USER}`
+if [ $? -ne 0 ]
+then
+    logit "ERROR" "Failed to add user ${N_USER}"
+    logit "ERROR" "${RET}"
+    logit "ERROR" "Please fix the issue and try again"
+	exit 1
+fi
+
+RET=`chmod 2755 /shares/${DIR}/${N_USER}`
+if [[ "$?" -ne 0 ]]
+then
+    logit "ERROR" "Failed to set correct permissions to the folder /shares/${DIR}/${N_USER}"
+    logit "ERROR" "${RET}"
+	exit 1
+fi
+rpmstat=`rpm -qa pwgen`
+if [ "$rpmstat" == "" ]
+then
+    logit "ERROR" "need to install pwgen software"
+    yum install pwgen
+fi
+PASS=`pwgen -1 -Bcnys -N1 10`
+if [ "$?" -ne 0 ]
+then
+    logit "ERROR" "Failed to generate new password"
+    logit  "ERROR" "Please manually create a new password and add it to the account ${N_USER}"
+	exit 1
+fi
+
+echo "$PASS" |passwd --stdin ${N_USER}
+if [ "$?" -ne 0 ]
+then
+    logit "ERROR" "Failed to set passwd; You must set it manually"
+	exit 1
+fi
+
+echo "Password assigned for ${N_USER}: ${PASS}"
+echo "Please copy this as there will not be any stored record"
+exit

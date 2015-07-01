@@ -1,0 +1,18 @@
+/var/log/maillog {
+    daily
+    rotate 30
+    dateext
+    notifempty
+    sharedscripts
+    prerotate
+         /usr/bin/perl /usr/local/pflogsumm/pflogsumm.pl --problems_first /var/log/maillog >/tmp/mail_summary.txt
+         mail -s "Postfix summary - <%= @hostname %>" <%= @postfix_summary_email %> </tmp/mail_summary.txt
+    endscript
+    postrotate
+        /bin/kill -HUP `cat /var/run/syslogd.pid 2> /dev/null` 2> /dev/null || true
+        /bin/kill -HUP `cat /var/run/rsyslogd.pid 2> /dev/null` 2> /dev/null || true
+    endscript
+    copytruncate
+    create 644 root root
+    compress
+}

@@ -1,0 +1,23 @@
+---  
+mailhost: smtp-uat.ad.issgovernance.com
+smtp_server: VSNA-UAT-NWK201.ad.issgovernance.com
+relay_host: 10.242.241.53
+mydomain: ad.issgovernance.com
+mcollective::host: 10.243.65.146
+puppetserver: 10.243.65.146
+message_size_limit: 36864000
+allowed_subnet:
+  - subnet: '10.242.65.0/24'
+    allowed: 'OK'
+  - subnet: '10.242.75.0/24'
+    allowed: 'OK'
+recipient_domains:
+  - domain: issgovernance.com
+    allowed: 'OK'
+  - domain: issproxy.com
+    allowed: 'OK'
+  - domain: isscorporateservices.com
+    allowed: 'OK'
+  - domain: UAT.issgovernance.com
+    allowed: 'OK'
+
