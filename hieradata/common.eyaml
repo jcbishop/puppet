@@ -1,0 +1,24 @@
+---
+mcollective::sub_collectives:  mcollective
+mcollective::main_collective:  mcollective
+mcollective::plugin_psk:       $1$yrprMeNi$SV6Tem3xPPKD1/kf7tV6w.
+mcollective::port:             61613
+mcollective::user:             mcollective
+mcollective::password:         marionette
+mcollective::log_level:        warn
+mcollective::ssl:              false
+server:root:password:          >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
+    DQYJKoZIhvcNAQEBBQAEggEAcJyIz4fzACJPQxcqXQtgbx0LcWKZX/CiuRU5
+    gvmI9sTaaTma7PF6cSh6BwjQEHZH8LJZtczF3sT57p8fKonAmXMsUhJhi4a4
+    wI9/KYdjRTKrgz2MpkZnVY41MirWE0y00rPvrm/OCiUa5pl/YBXzmFwPbcf/
+    Lnjp7rCoxFJwEw7mMYknd60xws0F/aXgYmC4SIwl164PbEqdGuszjoA35hWS
+    pxGI0HgOJR/2dDRyRgSN2HvXFA2f1F2+gFo9UWGvmGsUo1Qp/bZkt/bvsPEK
+    sZyoSvVCO4e4o38SlYd5noMhecIWCinGO6jMlTe5ZHOKR9FQ9SQE4OHLvjmA
+    14x1SDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDk4jLa92DJ6NjB4oCG
+    WdYWgBBZYF4c2iD8K1IlERXGCEVN]
+
+classes:
+    - base
+    - sftp
+    - smtp
