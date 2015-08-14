@@ -1,0 +1,6 @@
+# Allowed IP / Subnet   OK   # comment
+##################################################
+127.0.0.1       OK      # this is from localhost
+<% @allowed_subnet.each do | item | -%>
+<%= item['subnet'] %>     <%= item['allowed'] %> 
+<% end -%>

@@ -1,0 +1,30 @@
+#================================================================
+# BASH Prompts
+#----------------------------------------------------------------
+
+function set_prompt
+{
+        # Default Prompt
+        local PROMPT_Default='[\u@\h \W]\$ '
+
+        # Green text on black BG
+        local PROMPT_GreenOnBlack='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
+
+        # Red text on black BG
+        local PROMPT_RedOnBlack='\[\e[1;31m\][\u@\h \W]\$\[\e[0m\] '
+
+        HOST_P=${HOSTNAME:5:3}
+        case $HOST_P in
+                prd|PRD)
+                        PS1="$PROMPT_RedOnBlack"
+                        ;;
+                uat|UAT)
+                        PS1="$PROMPT_GreenOnBlack"
+                        ;;
+                *)
+                        PS1="$PROMPT_Default"
+                        ;;
+        esac
+}
+
+set_prompt

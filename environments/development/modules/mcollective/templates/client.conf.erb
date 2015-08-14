@@ -1,0 +1,32 @@
+main_collective = <%= @main_collective %>
+collectives = <%= @sub_collectives %>
+libdir = /usr/libexec/mcollective
+logfile = /var/log/mcollective.log
+loglevel = <%= @log_level %>
+
+#Plugins
+securityprovider = <%= @security_provider %>
+plugin.psk = <%= @security_secret %>
+
+#direct_addressing = 1
+
+connector = rabbitmq
+plugin.rabbitmq.vhost = /mcollective
+plugin.rabbitmq.pool.size = 1
+plugin.rabbitmq.pool.1.host = <%= @host %>
+plugin.rabbitmq.pool.1.port = <%= @port %>
+plugin.rabbitmq.pool.1.user = <%= @user %>
+plugin.rabbitmq.pool.1.password = <%= @passwd %>
+
+
+#plugin.rabbitmq.pool.2.host = <%= @broker_host2 %>
+#plugin.rabbitmq.pool.2.port = <%= @broker_port2 %>
+#plugin.rabbitmq.pool.2.user = <%= @broker_user %>
+#plugin.rabbitmq.pool.2.password = <%= @broker_passwd %>
+
+rpcauthorization = 0
+#Facts
+factsource = yaml
+plugin.yaml = /etc/mcollective/facts.yaml
+#
+classesfile = /var/lib/puppet/state/classes.txt

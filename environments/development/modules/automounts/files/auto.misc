@@ -1,0 +1,64 @@
+#
+# $Id: auto.misc,v 1.2 2003/09/29 08:22:35 raven Exp $
+#
+# This is an automounter map and it has the following format
+# key [ -mount-options-separated-by-comma ] location
+# Details may be found in the autofs(5) manpage
+
+cd              -fstype=iso9660,ro,nosuid,nodev :/dev/cdrom
+
+# the following entries are samples to pique your imagination
+#linux          -ro,soft,intr           ftp.example.org:/pub/linux
+#boot           -fstype=ext2            :/dev/hda1
+#floppy         -fstype=auto            :/dev/fd0
+#floppy         -fstype=ext2            :/dev/fd0
+#e2floppy       -fstype=ext2            :/dev/fd0
+#jaz            -fstype=ext2            :/dev/sdc1
+#removable      -fstype=ext2            :/dev/hdd
+Ballotscan -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw02.ad.issgovernance.com/ballotscan
+bpr -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://10.243.65.195/data
+cgqfeed -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-ftp100.ad.issgovernance.com/FTPData
+cgq-repository -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-ftp100.ad.issgovernance.com/FTPData
+cgq-screener -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/UserUpdateRepository
+corpsec -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/UserUpdateRepository
+crestxmit -fstype=cifs,rw,domain=core,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://ab-swift01.rmg-ny.com/cresttest/
+datomatic -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw05.ad.issgovernance.com/ftpdata
+esg -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw02.ad.issgovernance.com/esg
+esg-repo -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+esg-repository -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+Ftpdata -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-ftp100.ad.issgovernance.com/ftp
+ftpdata -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-ftp100.ad.issgovernance.com/ftpdata
+ftp -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-ftp100.ad.issgovernance.com/FTPData
+gacreg -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/UserUpdateRepository
+gac-repository -fstype=cifs,ro,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+govex -fstype=cifs,ro,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/GovEx
+gpdArchive2 -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw02.ad.issgovernance.com/gpd
+gpdArchive -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw02.ad.issgovernance.com/swift
+gpdCrest2 -fstype=cifs,rw,domain=core,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://ab-swift01.rmg-ny.com/crest/
+gpdSwift -fstype=cifs,rw,domain=core,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://ab-swift01.rmg-ny.com/messagefiles/
+gsp -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw02.ad.issgovernance.com/GSP
+iosrepository -fstype=cifs,ro,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+mainsight -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+Meeting -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/pcpmount
+pacha-data -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw05.ad.issgovernance.com/data
+pacha-holdings -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw05.ad.issgovernance.com/holdings
+px -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw02.ad.issgovernance.com/px
+pxGFaxProcess -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw01.ad.issgovernance.com/pxgfaxprocess
+rbc-repository -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw05.ad.issgovernance.com/rbc
+repository -fstype=cifs,ro,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+Repository -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+roadrunner-itchy -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw02.ad.issgovernance.com/itchy
+roadrunner-weblogs -fstype=cifs,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw02.ad.issgovernance.com/WebLogs
+SCAS -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+SCASReports -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repositoryreports
+simba-pcpmount -fstype=cifs,ro,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/pcpmount
+simba-repository -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+sully-pcpmount -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/pcpmount
+sully-repository -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/repository
+tinkerbell-ftpdata -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-ftp100.ad.issgovernance.com/FTPData
+userupdate -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/UserUpdateRepository
+vdsclient -fstype=cifs,ro,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/VDS Client
+vdsfiles -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw05.ad.issgovernance.com/vdsfiles
+vdsnpx -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw03.ad.issgovernance.com/VDS N-Px Reports
+wrkgrps -fstype=cifs,rw,domain=ad-dev.issgovernance.com,username=x_sambamnts-DEV,password=7cHU7heRSI3r,sec=ntlmssp ://vpna-dev-fsw02.ad.issgovernance.com/wrkgrps
+

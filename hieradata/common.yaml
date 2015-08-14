@@ -7,6 +7,8 @@ mcollective::user:             mcollective
 mcollective::password:         marionette
 mcollective::log_level:        warn
 mcollective::ssl:              false
+server:root:password:          >
+    DEC::PKCS7[(10!)V1kin6]!
 
 classes:
     - base

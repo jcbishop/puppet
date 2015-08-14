@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+fdate=`date +"%Y%m%d%H%M%S"`
+ldate=`date +"%Y/%m/%d %H:%M:%S"`
+
+local_passwd_cksum=`md5sum /etc/passwd|awk '{print $1}'`
+local_group_cksum=`md5sum /etc/group|awk '{print $1}'`
+local_shadow_cksum=`md5sum /etc/shadow|awk '{print $1}'`
+
+shared_passwd_cksum=`md5sum /shares/comp/sftpadmin/etc_passwd|awk '{print $1}'`
+shared_group_cksum=`md5sum /shares/comp/sftpadmin/etc_group|awk '{print $1}'`
+shared_shadow_cksum=`md5sum /shares/comp/sftpadmin/etc_shadow|awk '{print $1}'`
+
+
+if [[ "${local_passwd_cksum}" != "${shared_passwd_cksum}" ]] || [[ "${local_group_cksum}" != "${shared_group_cksum}" ]] || [[ "${local_shadow_cksum}" != "${shared_shadow_cksum}" ]]
+then
+    echo "${ldate} sync needed"
+    #backup current
+    cp -p /etc/passwd /shares/comp/sftpadmin/backup/${HOSTNAME}_passwd.${fdate}
+    cp -p /etc/group /shares/comp/sftpadmin/backup/${HOSTNAME}_group.${fdate}
+    cp -p /etc/shadow /shares/comp/sftpadmin/backup/${HOSTNAME}_shadow.${fdate}
+    
+    #find newer file
+    if [ "/etc/passwd" -nt "/shares/comp/sftpadmin/etc_passwd" ] || [ "/etc/group" -nt "/shares/comp/sftpadmin/etc_group" ] || [ "/etc/shadow" -nt "/shares/comp/sftpadmin/etc_shadow" ]
+    then
+        echo "${ldate} Copy out new verion"
+        cp -p /etc/passwd /shares/comp/sftpadmin/etc_passwd
+        cp -p /etc/group /shares/comp/sftpadmin/etc_group
+        cp -p /etc/shadow /shares/comp/sftpadmin/etc_shadow
+    else
+    	#now copy in new version
+	echo "${ldate} Copy in new version"
+    	cp -p /shares/comp/sftpadmin/etc_passwd /etc/passwd
+    	cp -p /shares/comp/sftpadmin/etc_group /etc/group
+    	cp -p /shares/comp/sftpadmin/etc_shadow /etc/shadow
+    fi
+else
+    echo "${ldate} No sync needed"
+fi
+exit
